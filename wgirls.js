@@ -1,4 +1,5 @@
-$(function () {
+
+jQuery(document).ready(function(){
     $("#countypane .fl-cta-button").prepend('<div><select id="selcounty" onchange="updateurl(this)"><option value = "">-- Select a county --</option></select></div>');
 
     $("#countypane .fl-button").css("background-color", "#ddd");
@@ -10,8 +11,8 @@ $(function () {
             var o = new Option(jsondata[i]['county'], jsondata[i]['url']);
             selcounty.append(o);
         }                
-    }
-});
+    } 
+})(jQuery);
         
 function updateurl(selected) {
     if (selected.value === "") {

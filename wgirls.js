@@ -1,29 +1,28 @@
+jQuery(function () {
+    jQuery("#countypane .fl-cta-button").prepend('<div><select id="selcounty" onchange="updateurl(this)"><option value = "">-- Select a county --</option></select></div>');
 
-jQuery(document).ready(function(){
-    $("#countypane .fl-cta-button").prepend('<div><select id="selcounty" onchange="updateurl(this)"><option value = "">-- Select a county --</option></select></div>');
+    jQuery("#countypane .fl-button").css("background-color", "#ddd");
+    jQuery("#countypane .fl-button").css("border-color", "#aaa");
 
-    $("#countypane .fl-button").css("background-color", "#ddd");
-    $("#countypane .fl-button").css("border-color", "#aaa");
-
-    var selcounty = $("#countypane select");
+    var selcounty = jQuery("#countypane select");
     if (selcounty) {
         for (var i = 0; i < jsondata.length; i++) {
             var o = new Option(jsondata[i]['county'], jsondata[i]['url']);
             selcounty.append(o);
         }                
-    } 
-})(jQuery);
+    }
+});
         
 function updateurl(selected) {
     if (selected.value === "") {
         console.log("empty");
-        $("#countypane .fl-button").css("background-color", "#ddd");
-        $("#countypane .fl-button").css("border-color", "#aaa");
-        $("#countypane .fl-button").attr("href", "#");
+        jQuery("#countypane .fl-button").css("background-color", "#ddd");
+        jQuery("#countypane .fl-button").css("border-color", "#aaa");
+        jQuery("#countypane .fl-button").attr("href", "#");
     }
     else {
-        $("#countypane .fl-button").css("background-color", "#ed1c24");
-        $("#countypane .fl-button").css("border-color", "#ed1c24");
-        $("#countypane .fl-button").attr("href", selected.value);
+        jQuery("#countypane .fl-button").css("background-color", "#ed1c24");
+        jQuery("#countypane .fl-button").css("border-color", "#ed1c24");
+        jQuery("#countypane .fl-button").attr("href", selected.value);
     }
 }

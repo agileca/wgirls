@@ -11,6 +11,19 @@ jQuery(function () {
             selcounty.append(o);
         }                
     }
+	
+	jQuery("#countypaneny .fl-cta-button").prepend('<div><select id="selcountyny" onchange="updateurlny(this)"><option value = "">-- Select a region --</option></select></div>');
+
+    jQuery("#countypaneny .fl-button").css("background-color", "#ddd");
+    jQuery("#countypaneny .fl-button").css("border-color", "#aaa");
+
+    var selcountyny = jQuery("#countypaneny select");
+    if (selcountyny) {
+        for (var i = 0; i < jsondatany.length; i++) {
+            var o = new Option(jsondatany[i]['county'], jsondatany[i]['url']);
+            selcountyny.append(o);
+        }                
+    }
 });
         
 function updateurl(selected) {
@@ -24,5 +37,18 @@ function updateurl(selected) {
         jQuery("#countypane .fl-button").css("background-color", "#ed1c24");
         jQuery("#countypane .fl-button").css("border-color", "#ed1c24");
         jQuery("#countypane .fl-button").attr("href", selected.value);
+    }
+}        
+function updateurlny(selected) {
+    if (selected.value === "") {
+        console.log("empty");
+        jQuery("#countypaneny .fl-button").css("background-color", "#ddd");
+        jQuery("#countypaneny .fl-button").css("border-color", "#aaa");
+        jQuery("#countypaneny .fl-button").attr("href", "#");
+    }
+    else {
+        jQuery("#countypaneny .fl-button").css("background-color", "#ed1c24");
+        jQuery("#countypaneny .fl-button").css("border-color", "#ed1c24");
+        jQuery("#countypaneny .fl-button").attr("href", selected.value);
     }
 }
